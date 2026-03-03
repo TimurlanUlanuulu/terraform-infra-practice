@@ -1,6 +1,6 @@
 module "cluster" {
   source      = "../eks-module"
-  eks_name    = "adapt-ex-cluster-dev"
+  eks_name    = var.root_cluster_name
   k8s_version = "1.31"
   subnet_list = [
     "subnet-0f1ba6655e24bfcc6",
@@ -9,3 +9,5 @@ module "cluster" {
   ]
   role_name = "adapt-ex-cluster-role-dev"
 }
+
+
