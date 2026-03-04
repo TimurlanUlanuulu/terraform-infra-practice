@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+
+  workflow_dispatch:
+
+
+permissions:
+  id-token: write
+  content: read
+jobs:
+
+  terraform-deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials for China region audience
+        uses: aws-actions/configure-aws-credentials@v6.0.0
+        with:
+          audience: sts.amazonaws.com.cn
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::308082261316:role/infra-practice-github-role
+
+      - name: Deploy Terraform Infra
+        run: |
+          aws sts get-caller-identity
+
+
