@@ -1,4 +1,4 @@
-variable "eks_name" {
+variable "project_name" {
   type = string
 }
 
@@ -10,6 +10,6 @@ variable "subnet_list" {
   type = list(string)
 }
 
-variable "role_name" {
+variable "environment" {
   type = string
 }
