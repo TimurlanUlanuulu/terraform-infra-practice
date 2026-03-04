@@ -26,6 +26,7 @@ jobs:
           role-to-assume: arn:aws:iam::308082261316:role/infra-practice-github-role
 
       - name: Deploy Terraform Infra
+        directory: root-module
         run: |
           terraform init
           terraform plan -var-file=dev.tfvars
