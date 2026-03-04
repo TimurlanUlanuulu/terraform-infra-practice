@@ -27,6 +27,7 @@ jobs:
 
       - name: Deploy Terraform Infra
         run: |
-          aws sts get-caller-identity
+          terraform init
+          terraform plan -var-file=dev.tfvars
 
 
