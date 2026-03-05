@@ -23,13 +23,13 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v6.0.0
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::308082261316:role/infra-practice-github-role
+          role-to-assume: arn:aws:iam::209410625437:role/infra-practice-github-actions
 
       - name: Deploy Terraform Infra
         working-directory: root-module/
         run: |
           terraform init
-          terraform plan -var-file=dev.tfvars
-          terraform apply -auto-approve -input=false -var-file=dev.tfvars
+          terraform plan -var-file=staging.tfvars
+          terraform apply -auto-approve -input=false -var-file=staging.tfvars
 
 
