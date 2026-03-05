@@ -7,4 +7,6 @@ locals {
   subnet_b_tag    = "Public Subnet B"
   igtw_tag        = "${var.project_name} IG"
   route_table_tag = "${var.project_name} public-subnets-route-table"
+  subnet_a_zone   = "${var.vpc_region}a"
+  subnet_b_zone   = "${var.vpc_region}b"
 }

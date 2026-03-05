@@ -10,3 +10,7 @@ variable "root_k8s_version" {
 variable "root_environment" {
   type = string
 }
+
+variable "root_vpc_region" {
+  type = string
+}

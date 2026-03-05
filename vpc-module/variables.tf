@@ -6,4 +6,6 @@ variable "project_name" {
   type = string
 }
 
-
+variable "vpc_region" {
+  type = string
+}
