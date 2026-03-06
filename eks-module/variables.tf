@@ -17,3 +17,7 @@ variable "environment" {
 variable "ec2_types" {
   type = list(string)
 }
+
+variable "principal_arn" {
+  type = string
+}

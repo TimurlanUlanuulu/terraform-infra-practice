@@ -12,6 +12,7 @@ module "cluster" {
   k8s_version = var.root_k8s_version
   subnet_list = module.vpc.subnet_list
   ec2_types = var.root_ec2_types
+  principal_arn = "arn:aws:iam::308082261316:user/admin"
 }
 
 

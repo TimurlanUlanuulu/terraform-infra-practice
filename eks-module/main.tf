@@ -44,3 +44,15 @@ resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
   role       = aws_iam_role.cluster.name
 }
 
+
+
+resource "aws_eks_access_policy_association" "access_entry" {
+  cluster_name  = aws_eks_cluster.cluster.name
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
+  principal_arn = var.principal_arn
+
+  access_scope {
+    type       = "namespace"
+    namespaces = ["example-namespace"]
+  }
+}
