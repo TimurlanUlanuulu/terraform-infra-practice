@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   terraform-deploy:
-    environment: staging
+    environment: ${{ (github.ref == 'refs/head/main' && 'production') || (github.ref == 'refs/head/staging' && 'staging') || 'dev' }}
     runs-on: ubuntu-22.04
 
     steps:
