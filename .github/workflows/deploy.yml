@@ -28,6 +28,6 @@ jobs:
         run: |
           terraform init
           terraform plan -var-file=${{ vars.ENVIRONMENT_STAGE }}.tfvars
-          terraform apply -auto-approve -input=false -var-file=${{ vars.ENVIRONMENT_STAGE }}.tfvars
+          terraform destroy -auto-approve -input=false -var-file=${{ vars.ENVIRONMENT_STAGE }}.tfvars
 
 
