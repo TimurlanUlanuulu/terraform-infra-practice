@@ -14,3 +14,7 @@ variable "root_environment" {
 variable "root_vpc_region" {
   type = string
 }
+
+variable "root_ec2_types" {
+  type = list(string)
+}
