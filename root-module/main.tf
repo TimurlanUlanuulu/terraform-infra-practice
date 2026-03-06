@@ -5,13 +5,13 @@ module "vpc" {
   vpc_region = var.root_vpc_region
 }
 
-# module "cluster" {
-#   source      = "../eks-module"
-#   project_name = var.root_project_name
-#   environment = var.root_environment
-#   k8s_version = var.root_k8s_version
-#   subnet_list = module.vpc.subnet_list
-# }
+module "cluster" {
+  source      = "../eks-module"
+  project_name = var.root_project_name
+  environment = var.root_environment
+  k8s_version = var.root_k8s_version
+  subnet_list = module.vpc.subnet_list
+}
 
 
 
