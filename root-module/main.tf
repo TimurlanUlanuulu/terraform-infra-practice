@@ -1,9 +1,9 @@
-module "vpc" {
-  source = "../vpc-module"
-  project_name = var.root_project_name
-  cidr_block_prefix = "10.10"
-  vpc_region = var.root_vpc_region
-}
+# module "vpc" {
+#   source = "../vpc-module"
+#   project_name = var.root_project_name
+#   cidr_block_prefix = "10.10"
+#   vpc_region = var.root_vpc_region
+# }
 
 # module "cluster" {
 #   source      = "../eks-module"

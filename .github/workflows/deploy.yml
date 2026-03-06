@@ -5,31 +5,29 @@ on:
 
   workflow_dispatch:
 
-
 permissions:
   id-token: write
   contents: read
+
 jobs:
-
   terraform-deploy:
-
+    environment: staging
     runs-on: ubuntu-22.04
 
     steps:
-
       - uses: actions/checkout@v4
 
       - name: Configure AWS Credentials for China region audience
         uses: aws-actions/configure-aws-credentials@v6.0.0
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::209410625437:role/infra-practice-github-actions
+          role-to-assume: ${{ vars.IAM_ROLE }}
 
       - name: Deploy Terraform Infra
         working-directory: root-module/
         run: |
           terraform init
-          terraform plan -var-file=staging.tfvars
-          terraform apply -auto-approve -input=false -var-file=staging.tfvars
+          terraform plan -var-file=${{ vars.ENVIRONMENT_STAGE }}.tfvars
+          terraform apply -auto-approve -input=false -var-file=${{ vars.ENVIRONMENT_STAGE }}.tfvars
 
 
