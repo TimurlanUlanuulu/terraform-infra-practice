@@ -1,8 +1,8 @@
 
-resource "aws_eks_node_group" "example" {
+resource "aws_eks_node_group" "node_group_name" {
   cluster_name    = aws_eks_cluster.cluster.name
   node_group_name = local.node_group_name
-  node_role_arn   = aws_iam_role.worker_nodes_name.arn
+  node_role_arn   = aws_iam_role.worker_nodes_role.arn
   subnet_ids      = var.subnet_list
 
   instance_types = var.ec2_types
@@ -27,7 +27,7 @@ resource "aws_eks_node_group" "example" {
 }
 
 
-resource "aws_iam_role" "worker_nodes_name" {
+resource "aws_iam_role" "worker_nodes_role" {
   name = local.node_group_role
 
   assume_role_policy = jsonencode({
@@ -44,15 +44,15 @@ resource "aws_iam_role" "worker_nodes_name" {
 
 resource "aws_iam_role_policy_attachment" "example-AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.example.name
+  role       = aws_iam_role.worker_nodes_name.name
 }
 
 resource "aws_iam_role_policy_attachment" "example-AmazonEKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role       = aws_iam_role.example.name
+  role       = aws_iam_role.worker_nodes_name.name
 }
 
 resource "aws_iam_role_policy_attachment" "example-AmazonEC2ContainerRegistryReadOnly" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role       = aws_iam_role.example.name
+  role       = aws_iam_role.worker_nodes_name.name
 }
