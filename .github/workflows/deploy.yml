@@ -26,8 +26,8 @@ jobs:
       - name: Deploy Terraform Infra
         working-directory: root-module/
         run: |
-          terraform init
+          terraform init -backend-config="bucket=adapt-ex-tfstate-bucket-${{ vars.ENVIRONMENT_STAGE }}"
           terraform plan -var-file=${{ vars.ENVIRONMENT_STAGE }}.tfvars
-          terraform destroy -auto-approve -input=false -var-file=${{ vars.ENVIRONMENT_STAGE }}.tfvars
+          terraform apply -auto-approve -input=false -var-file=${{ vars.ENVIRONMENT_STAGE }}.tfvars 
 
 
